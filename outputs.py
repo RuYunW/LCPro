@@ -5,8 +5,9 @@ import os
 
 # load dataset
 def load_dataset():
-    filename = 'data/train_magic_test_out.txt'
-    with open(file = filename,mode='r') as file:
+    # filename = 'data/train_magic_test_out.txt'
+    filename = 'data/train_magic_out.txt'
+    with open(file = filename,mode='r',encoding='UTF-8') as file:
         train_y = []
         train_y_words=[]
         lines = file.readlines()
@@ -59,5 +60,6 @@ def save_word_vec(values):
 
 train_y_word = load_dataset()
 values,max_len_y = program_to_vector(train_y_word)
-print(values)
+save_word_vec(values)
+# print(values)
 # save_word_vec(values)

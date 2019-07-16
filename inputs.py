@@ -12,8 +12,9 @@ import numpy as np
 
 # Loading dataset
 def load_dataset():
-    filename = 'data/train_magic_test_in.txt'
-    with open(file = filename,mode='r') as file:
+    # filename = 'data/train_magic_test_in.txt'
+    filename = 'data/train_magic_in.txt'
+    with open(file = filename,mode='r',encoding='UTF-8') as file:
         train_x = []
         train_x_words=[]
         lines = file.readlines()
@@ -61,22 +62,13 @@ def save_word_vec(values):
         for word in line:
             write_line += str(word)+' '
         file_write_obj.writelines(write_line)
-        # file_write_obj.write('\n')
+        file_write_obj.write('\n')
         write_line=""  # clear
     file_write_obj.close()
 
-
-
-
-
-
-
-
-dic_len = 240
-train_x_words = load_dataset()
-train_x,max_len=word_to_vector(train_x_words)
-dropout_rate = 0.2
-
+x_train = load_dataset()
+values,maxlen = word_to_vector(x_train)
+save_word_vec(values)
 
 
 
