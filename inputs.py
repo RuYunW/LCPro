@@ -8,7 +8,7 @@ from keras.layers import LSTM,Dropout,Dense
 from keras.layers.convolutional import Conv1D,MaxPooling1D
 import os
 import numpy as np
-from outputs import program_to_vector
+# from outputs import program_to_vector
 
 # Loading dataset
 def load_dataset():
@@ -43,7 +43,7 @@ def word_to_vector(train_x_words):
             line_vec.append(dic_set[word])
         values.append(line_vec)
         line_vec=[]
-    print(values)
+    print(max_len)  # 99
     return values,max_len
 
 
@@ -69,18 +69,7 @@ def save_word_vec(values):
 
 
 
-# CNN + LSTM
-def build_models():
-    model = Sequential()
-    model.add(Embedding(input_dim=dic_len,output_dim=32,input_length=max_len))
-    model.add(Conv1D(filters=32,kernel_size=3,padding='same',activation='relu'))
-    model.add(MaxPooling1D(pool_size=2))
-    model.add(LSTM(units=100))
-    model.add(Dropout(dropout_rate))
-    model.add(Dense(units=dic_len,activation='softmax'))
-    model.compile(loss='categorical_crossentropy',optimizer='adam')
-    model.summary()
-    return model
+
 
 
 dic_len = 240
@@ -89,10 +78,6 @@ train_x,max_len=word_to_vector(train_x_words)
 dropout_rate = 0.2
 
 
-if __name__ == '__main__':
-    np.random.seed(seed=7)
-    # 导入数据
-    train_x = 
 
 
 

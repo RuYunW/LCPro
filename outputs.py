@@ -36,7 +36,7 @@ def program_to_vector(train_y_words):
             line_vec.append(dic_set[word])
         values.append(line_vec)
         line_vec=[]
-    # print(values)
+    print(max_len_y)  # 277
     return values,max_len_y
 
 
@@ -58,6 +58,6 @@ def save_word_vec(values):
 
 
 train_y_word = load_dataset()
-values,max_len_y = word_to_vector(train_y_word)
+values,max_len_y = program_to_vector(train_y_word)
 print(values)
-save_word_vec(values)
+# save_word_vec(values)
