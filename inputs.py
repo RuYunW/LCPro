@@ -61,7 +61,7 @@ def save_word_vec(values):
         for word in line:
             write_line += str(word)+' '
         file_write_obj.writelines(write_line)
-        file_write_obj.write('\n')
+        # file_write_obj.write('\n')
         write_line=""  # clear
     file_write_obj.close()
 
