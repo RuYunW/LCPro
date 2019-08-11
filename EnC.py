@@ -3,8 +3,9 @@ from keras.models import Sequential
 from keras.layers.embeddings import Embedding
 from keras.layers import LSTM,Dropout
 import numpy as np
-from keras.utils import np_utils
 from keras.preprocessing import sequence
+import json
+
 
 # read x_train
 x_train = []
@@ -15,6 +16,8 @@ with open('word_vector.txt','r',encoding='UTF-8') as f1:
         x_train.append(list(filter(None,line.replace('\n','').split(' '))))
         if x_max_len<len(line):
             x_max_len = len(line)
+
+# 11969
 
 # read y_train
 y_train = []
@@ -49,7 +52,15 @@ if __name__ == '__main__':
     y_train = sequence.pad_sequences(y_train,maxlen=y_max_len)
     # # y_train = np_utils.to_categorical(y_train,455)
     model = build_models()
-    model.fit(x_train,y_train,epochs=10,batch_size=5)
+    model.fit(x_train,y_train,epochs=1,batch_size=32)
+    # save model to json
+    model_json = model.to_json()
+    model_json_file = './save/model.json'
+    with open(model_json_file,'w') as file:
+        file.write(model_json)
+    # save weight
+    model_hd5_file = './save/model.hd5'
+    model.save_weights(model_hd5_file)
 
 
 

@@ -2,12 +2,7 @@
 # 处理输入数据及其编码保存
 
 from gensim import corpora
-from keras.layers.embeddings import Embedding
-from keras.models import Sequential
-from keras.layers import LSTM,Dropout,Dense
-from keras.layers.convolutional import Conv1D,MaxPooling1D
 import os
-import numpy as np
 # from outputs import program_to_vector
 
 # Loading dataset
