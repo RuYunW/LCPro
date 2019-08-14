@@ -6,7 +6,7 @@ import os
 # load dataset
 def load_dataset():
     # filename = 'data/train_magic_test_out.txt'
-    filename = 'data/train_magic_out.txt'
+    filename = 'data/test_magic.out'
     with open(file = filename,mode='r',encoding='UTF-8') as file:
         train_y = []
         train_y_words=[]
@@ -23,7 +23,7 @@ def load_dataset():
 def program_to_vector(train_y_words):
     dic = corpora.Dictionary(train_y_words[:][:])  # each words to dic
     # 保存字典到文本文件
-    dic.save_as_text('dict_file_out.txt')
+    dic.save_as_text('./save/test_dict_file_out.txt')
     dic_set = dic.token2id
     # 将单词转换为整数
     values = []
@@ -44,9 +44,9 @@ def program_to_vector(train_y_words):
 # save word_vec
 def save_word_vec(values):
     # checking whether the file exits
-    if os.path.exists("program_vector.txt"):
-        os.remove("program_vector.txt")
-    file_write_obj = open("program_vector.txt", 'w')
+    if os.path.exists("test_program_vector.txt"):
+        os.remove("test_program_vector.txt")
+    file_write_obj = open("test_program_vector.txt", 'w')
 
     write_line = ""
     for line in values:
